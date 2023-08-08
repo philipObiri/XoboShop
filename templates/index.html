@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Zobo Shop
+{% endblock title %}
+{% block content %}
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg bg-dark" style="background-color:rgb(219, 96, 96) ;">
+    <div class="container px-5">
+        <a class="navbar-brand text-white" href="">Zobo Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header-->
+<header class="py-5" style="background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder  mb-2">Give your throat a delicious treat
+                    </h1>
+                    <p class="lead -50 mb-4">We believe that a drink is no Drink when the drinking aint
+                        Delicious!</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-outline-danger btn-lg px-4 me-sm-3 my-3 text-dark"
+                            href="{% url 'login' %}">Login</a>
+                        <a class="btn btn-outline-light btn-lg px-4 my-3 text-dark"
+                            href="{% url 'register' %}">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Pricing section-->
+<section class="bg-light py-5 border-bottom" id="services">
+    <div class="container px-5 my-2">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Available Flavours</h2>
+            <p class="lead mb-0">With our no hassle prices. Below Are the Available Flavours</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <!-- Pricing card free-->
+            <div class="col-lg-6 col-xl-4">
+                <img src="{% static 'img/sobolo2.jpg' %}" alt="" class="img-fluid mb-1"
+                    style="border-radius: 7rem 2rem; border:2px solid rgb(133, 53, 53)">
+            </div>
+            <!-- Pricing card free-->
+            <div class="col-lg-6 col-xl-4">
+                <img src="{% static 'img/drink1.jpg' %}" alt="" class="img-fluid mb-1"
+                    style="border-radius: 10rem; border:2px solid rgb(133, 53, 53) ">
+            </div>
+            <!-- Pricing card free-->
+            <div class="col-lg-6 col-xl-4">
+                <img src="{% static 'img/sobolo.jpg' %}" alt="" class="img-fluid mb-1"
+                    style="border-radius: 2rem 7rem; border:1px solid rgb(133, 53, 53)">
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Testimonials section-->
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-2 px-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Customer testimonials</h2>
+            <p class="lead mb-0">Our customers love our products !</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <!-- Testimonial 1-->
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">Thanks to Zobo Shop for this wonderful juice. When I'm tired after work
+                                    , I simply place an order and there I have it!</p>
+                                <div class="small text-muted">- Abraham Wilson, Accra</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2-->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-1">Very Nutritious and Delicious , I would definitely order some more!</p>
+                                <div class="small text-muted">- Osei Despite , Kumasi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact section-->
+<section class="bg-light py-5" id="contact">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope p-0"></i>
+            </div>
+            <h2 class="fw-bolder">Still Got questions on your mind?</h2>
+            <p class="lead mb-0">Get in touch!. We'd love to hear from you</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <form id="contactForm" method="POST" action="#">
+                    {% csrf_token %}
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..."
+                            data-sb-validations="required" />
+                        <label for="name">Full Name</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com"
+                            data-sb-validations="required,email" />
+                        <label for="email">Email Address</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.
+                        </div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <!-- Phone number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                            data-sb-validations="required" />
+                        <label for="phone">Phone number</label>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is
+                            required.</div>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..."
+                            style="height: 10rem" data-sb-validations="required"></textarea>
+                        <label for="message">Message</label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
+                        </div>
+                    </div>
+
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                        </div>
+                    </div>
+                    <div class="d-none" id="submitErrorMessage">
+                        <div class="text-center text-danger mb-3">Error sending message!</div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="d-grid"><button class="btn btn-outline-danger btn-lg active" id="submitButton"
+                            type="submit">Submit</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<footer class="py-5 bg-dark">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white">Copyright &copy; Zobo Shop 2023</p>
+    </div>
+</footer>
+{% endblock footer %}
