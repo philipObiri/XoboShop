@@ -24,7 +24,6 @@ Place Order | Zobo Shop
         </div>
     </div>
 </nav>
-<!-- Pricing section-->
 <section class="bg-light py-5 border-bottom" id="services">
     <div class="container px-5 my-2">
         <div class="row gx-5 justify-content-center">
@@ -32,17 +31,13 @@ Place Order | Zobo Shop
                 <div class="card mb-5 mb-xl-0">
                     <div class="card-body p-5">
                         <div class="col text-center justify-content-center">
-                            <div class="mb-5">
-                                {% if item_amount == 1 %}
-                                <p>You are ordering for {{ item_amount }} bottle of Sobolo. <br>
-                                    Your Charge is {{ total_cost }} GHS.</p>
-                                {% else %}
-                                <p>You are ordering for {{ item_amount }} bottles of Sobolo. <br>
-                                    Your Charge is {{ total_cost }} GHS.</p>
-                                {% endif %}
+                            <div class="mb-5 text-center">
+                                <p> Thank you {{user.username}},  your Purchase was Successful </p><br>
+                                <p> We have received your order and w'ill begin processing shortly </p><br>
+                                <p>Your Payment ID : {{payment.ref}} </p>
                             </div>
                             <br>
-                            <button onclick="payWithPaystack()" class="btn btn-outline-danger">Proceed to Payment</button>
+                            <a href="{% url 'place-order' %}" class="btn btn-sm btn-outline-danger">Okay</a>
                         </div>
                     </div>
                 </div>
@@ -50,30 +45,5 @@ Place Order | Zobo Shop
         </div>
     </div>
 </section>
-<script>
-    function payWithPaystack(){
-        let currency = 'GHS';
-        let plan = '';
-        let reference = '{{ payment.reference }}';
-        let amount = '{{ payment.amount }}';
-        let obj = {
-            key:'{{ paystack_public_key }}',
-            email: '{{ payment.email }}',
-            amount: '{{ amount_value }}',
-            reference: reference,
-            callback: function(response){
-                window.location.href = "{% url 'verify_payment' payment.reference  %}";
-            },
-        };
-        if(Boolean(currency)){
-            obj.currency = currency.toUpperCase();
-        }
-        if(Boolean(plan)){
-            oj.plan = plan;
-        }
-        var handler = PaystackPop.setup(obj);
-        handler.openIframe();
-    }
-</script>
-<script src="https://js.paystack.co/v1/inline.js"></script>
+
 {% endblock content %}

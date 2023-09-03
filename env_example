@@ -1,0 +1,4 @@
+#Just Rename this file to ".env"
+SECRET_KEY=
+TEST_SECRET_KEY=
+TEST_PUBLIC_KEY=
